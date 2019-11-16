@@ -8,13 +8,18 @@
     "react-scripts": "3.2.0"
   },
   "scripts": {
+    "build-elm": "elm make src/Counter.elm --output=src/elm/Counter.js",
     "start": "EXTEND_ESLINT=true react-scripts start",
     "build": "EXTEND_ESLINT=true react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "no-unused-expressions": "off",
+      "no-restricted-globals": "off"
+    }
   },
   "browserslist": {
     "production": [

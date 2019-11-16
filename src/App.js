@@ -2,6 +2,9 @@ import React from 'react'
 import logo from './logo.svg'
 import './App.css'
 
+import Elm from './Elm.js'
+import Counter from './elm/Counter.js'
+
 class Toggle extends React.Component {
   constructor (props) {
     super(props)
@@ -20,7 +23,7 @@ class Toggle extends React.Component {
         </button>
         <div style={{ height: '100px' }}>
           {this.state.value
-            ? <span>todo</span>
+            ? <Elm app={Counter.Elm.Counter} flags={{ count: (new Date()).getTime() }} />
             : null}
         </div>
       </div>

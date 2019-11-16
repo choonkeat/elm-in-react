@@ -1,23 +1,31 @@
 # Embed Elm app in React
 
-Compile our Elm app into Javascript
+### Running this
 
 ```
-elm make src/Counter.elm --output=src/Counter.js
+yarn build-elm
+yarn start
 ```
 
-Import a `Elm` react component and our `Counter` javascript object
+### Description
+
+Compile our Elm app into Javascript (or `yarn build-elm`)
+
+```
+elm make src/Counter.elm --output=src/elm/Counter.js
+```
+
+Use the `Elm` react wrapper to render our `Counter` javascript object
 
 ``` javascript
-import Elm from './Elm.js'          // wrapper component that React renders
-import Counter from './Counter.js'  // our Elm app, passed to `Elm` component as `app` prop
-```
+import React from 'react'
+import Elm from './Elm.js'              // wrapper component that React renders
+import Counter from './elm/Counter.js'  // our Elm app, passed to `Elm` component as `app` prop
 
-Use `Elm` react component to render our `Counter` app
-
-``` jsx
-render() {
-  <Elm app={Counter.Elm.Counter} flags={{ count: 123 }} />  
+function App () {
+  return (
+    <Elm app={Counter.Elm.Counter} flags={{ count: 123 }} />
+  )
 }
 ```
 
@@ -40,3 +48,5 @@ and updating package.json
   }
 },
 ```
+
+See the commit changes to `package.json` for more information
