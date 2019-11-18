@@ -2,7 +2,7 @@ import React from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-import Elm from './Elm.js'
+import { unmountWithPort, UnmountableElm } from './UnmountableElm.js'
 import Counter from './elm/Counter.js'
 
 class Toggle extends React.Component {
@@ -23,7 +23,7 @@ class Toggle extends React.Component {
         </button>
         <div style={{ height: '100px' }}>
           {this.state.value
-            ? <Elm app={Counter.Elm.Counter} flags={{ count: (new Date()).getTime() }} />
+            ? <UnmountableElm src={Counter.Elm.Counter} ports={unmountWithPort('unmount')} flags={{ count: (new Date()).getTime() }} />
             : null}
         </div>
       </div>
