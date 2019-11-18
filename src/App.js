@@ -3,27 +3,38 @@ import logo from './logo.svg'
 import './App.css'
 
 import { unmountWithPort, UnmountableElm } from './UnmountableElm.js'
+import Elm from './Elm.js'
 import Counter from './elm/Counter.js'
 
 class Toggle extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      value: this.props.value
+      value1: this.props.value
     }
   }
 
   render () {
     return (
       <div>
-        <button onClick={() => this.setState({ value: !this.state.value })}>
-          {this.state.value
-            ? 'Unmount'
-            : 'Mount Elm app'}
+        <button onClick={() => this.setState({ value1: !this.state.value1 })}>
+          {this.state.value1
+            ? 'Unmount '
+            : 'Mount '} UnmountableElm
         </button>
         <div style={{ height: '100px' }}>
-          {this.state.value
+          {this.state.value1
             ? <UnmountableElm src={Counter.Elm.Counter} ports={unmountWithPort('unmount')} flags={{ count: (new Date()).getTime() }} />
+            : null}
+        </div>
+        <button onClick={() => this.setState({ value2: !this.state.value2 })}>
+          {this.state.value2
+            ? 'Unmount '
+            : 'Mount '} Elm
+        </button>
+        <div style={{ height: '100px' }}>
+          {this.state.value2
+            ? <Elm src={Counter.Elm.Counter} flags={{ count: (new Date()).getTime() }} />
             : null}
         </div>
       </div>

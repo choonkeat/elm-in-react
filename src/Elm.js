@@ -7,8 +7,14 @@ export default class Elm extends React.Component {
   }
 
   componentDidMount () {
-    this.app = this.props.app.init({
-      node: this.myRef.current,
+    // https://github.com/cultureamp/react-elm-components/pull/25
+    // The workaround is to create an extra <div>
+    var node = this.myRef.current
+    var placeholder = document.createElement('div')
+    node.appendChild(placeholder)
+
+    this.app = this.props.src.init({
+      node: placeholder,
       flags: this.props.flags
     })
   }
