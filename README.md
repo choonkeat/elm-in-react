@@ -50,3 +50,7 @@ and updating package.json
 ```
 
 See the commit changes to `package.json` for more information
+
+# See also
+
+The official package is [react-elm-components](https://github.com/cultureamp/react-elm-components) but caveat if you need to work with [componentWillUnmount](https://github.com/cultureamp/react-elm-components/issues/3#issuecomment-554724587)
